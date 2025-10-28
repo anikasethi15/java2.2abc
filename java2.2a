@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class SumUsingAutoboxing {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        System.out.println("Enter integers (type 'done' to finish):");
+        while (true) {
+            String input = sc.next();
+            if (input.equalsIgnoreCase("done"))
+                break;
+            try {
+                // String to int conversion
+                int num = Integer.parseInt(input);
+
+                // Autoboxing (int → Integer)
+                numbers.add(num);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input! Please enter an integer.");
+            }
+        }
+
+        int sum = 0;
+        // Unboxing (Integer → int)
+        for (Integer n : numbers) {
+            sum += n;
+        }
+
+        System.out.println("Sum of integers: " + sum);
+        sc.close();
+    }
+}
